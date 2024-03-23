@@ -11,10 +11,16 @@ app.use(helmet());
 
 
 
+app.get('/' , (req,res) => {
+ res.sendFile(path.join(__dirname ,'public' , 'index.html'));
+})
 
 
 
 
+
+
+ app.use(express.static(path.join(__dirname,'public')))
  // HTTPS,Self Signed Certificates and Public Key Cryptography
  // command for cert.pem & key.pem: openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365 
 
