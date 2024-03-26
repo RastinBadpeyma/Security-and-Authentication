@@ -43,6 +43,17 @@ app.use(CookieSession({
 
 app.use(passport.session());
 
+//save the session to the cookie
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+//read the session from the cookie
+passport.deserializeUser((obj , done) => {
+  done(null , obj);
+});
+
+
 
 //routes
 app.get('/auth/google' , 
