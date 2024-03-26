@@ -96,6 +96,12 @@ app.get('/', (req, res) => {
 app.get('/secret',checkLoggedIn ,(req, res) => {
   return res.send('Your personal secret value is 42!');
 });
+
+app.get('/auth/logout' , (req ,res) =>{
+  req.logout();
+  res.redirect('/');
+})
+
 app.use(express.static(path.join(__dirname,'public')))
 
  // HTTPS,Self Signed Certificates and Public Key Cryptography
