@@ -45,7 +45,7 @@ app.use(passport.session());
 
 //save the session to the cookie
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user.id);
 });
 
 //read the session from the cookie
