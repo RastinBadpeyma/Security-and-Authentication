@@ -55,6 +55,18 @@ passport.deserializeUser((obj , done) => {
 
 
 
+//Login middleware
+function checkLoggedIn(req , res, next){
+  const isLoggedIn = req.isAuthenticated() && req.user; 
+if (!isLoggedIn) {
+  res.status(401).json({
+    error : "You must log in"
+  })
+}
+ next();
+}
+
+
 //routes
 app.get('/auth/google' , 
   passport.authenticate('google' , {
@@ -81,6 +93,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/secret',checkLoggedIn ,(req, res) => {
+  return res.send('Your personal secret value is 42!');
+});
 app.use(express.static(path.join(__dirname,'public')))
 
  // HTTPS,Self Signed Certificates and Public Key Cryptography
