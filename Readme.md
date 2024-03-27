@@ -1,0 +1,1 @@
+In this project, I used Google OAuth for user authentication and also employed the cookie-session package to store the session in a cookie, thereby maintaining the user's login status.The server operates over the HTTPS protocol and uses self-signed certificates for secure communication.
